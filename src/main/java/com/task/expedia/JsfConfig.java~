@@ -1,0 +1,21 @@
+package com.task.expedia;
+
+
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import jakarta.faces.webapp.FacesServlet;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.Servlet;
+@Configuration
+public class JsfConfig {
+
+    @Bean
+    public ServletRegistrationBean<Servlet> facesServletRegistration() {
+        ServletRegistrationBean<Servlet> registration =
+                new ServletRegistrationBean<>(new FacesServlet(), "*.xhtml");
+        registration.setLoadOnStartup(1);
+        registration.setMultipartConfig(new MultipartConfigElement(""));
+        return registration;
+    }
+}
